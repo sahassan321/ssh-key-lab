@@ -96,3 +96,52 @@ eval "$(ssh-agent -s)"
 ```
 📸 SSH agent started  
 <img width="668" height="58" alt="Untitled 2" src="https://github.com/user-attachments/assets/24af89e6-f0dd-4dd5-9364-6ccfecf175e5" />
+
+The SSH private key was then added to the running SSH agent.
+This allows Git to use the key for authentication and commit signing.
+
+Command used:
+```bash
+ssh-add ~/.ssh/id_rsa
+```
+<img width="668" height="78" alt="Untitled 3" src="https://github.com/user-attachments/assets/ef08c3e4-bd38-4ed4-b2f7-004ffe8c0169" />
+
+## Part 4 — Loading SSH Keys into the SSH Agent
+
+The private SSH key was loaded into the SSH agent to allow secure authentication
+and cryptographic signing operations without exposing the private key on disk.
+
+Command used:
+```bash
+ssh-add ~/.ssh/id_rsa
+```
+📸 SSH key successfully added to the agent
+<img width="1458" height="431" alt="cyb-pic1 9" src="https://github.com/user-attachments/assets/4d894523-ea42-41c4-a42a-0aa8c3dfd5e8" />
+
+## Step 5 — Configure Git to Sign Commits with SSH
+
+Git was configured to automatically sign commits using SSH keys.
+This ensures that all commits are cryptographically tied to the author.
+
+Commands used:
+```bash
+git config --global user.name "CYB101 Student"
+git config --global user.email "cyb101@student.com"
+git config --global commit.gpgsign true
+git config --global gpg.format ssh
+```
+<img width="713" height="246" alt="cyb-pic1 8" src="https://github.com/user-attachments/assets/103fb5f7-5144-4bb1-91e4-6f93846677fb" />
+
+### Step 6 — Verifying the Signed Git Commit
+
+After creating a signed Git commit, the commit signature was verified to ensure authenticity and integrity.
+
+The following commands were used to display the most recent commit and verify its cryptographic signature:
+
+```bash
+git log -1 --oneline
+git show --show-signature
+```
+📸 Verified signed Git commit
+<img width="713" height="93" alt="cyb-pic1 10" src="https://github.com/user-attachments/assets/0082f4b3-0b4e-42a4-b17c-b69c9b4b7f03" />
+
